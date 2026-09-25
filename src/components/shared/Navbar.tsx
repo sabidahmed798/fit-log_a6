@@ -5,8 +5,8 @@ import logos from "../../assets/logo.png";
 const Navbar = () => {
   return (
     <nav className="w-full border-b border-[#1c1d22] bg-[#0C0D10]">
-      <div className="container mx-auto max-w-[1400px] px-4 sm:px-6">
-        <div className="flex min-h-[58px] items-center justify-between gap-3">
+      <div className="container mx-auto  px-4 sm:px-6">
+        <div className="flex h-[80px] items-center justify-between gap-3">
           {/* Logo + FITLOG */}
           <div className="flex shrink-0 items-center gap-2">
             <Image
