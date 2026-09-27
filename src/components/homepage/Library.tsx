@@ -26,9 +26,10 @@
 import Image from "next/image";
 import React from "react";
 import LibraryCard from "../shared/LibraryCard";
+import { ILibrary } from "@/Types/library.type";
 
 const getLibrary = async () => {
-  const response = await fetch("https://api.abcz.workers.dev/api/fitlog", {
+  const response = await fetch("https://api.api-store.workers.dev/api/fitlog", {
     cache: "no-store",
   });
 
@@ -55,7 +56,7 @@ const Library = async () => {
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
-        {libraryData.map((library, ind) => {
+        {libraryData.map((library: ILibrary, ind: number) => {
           return <LibraryCard key={ind} library={library} />;
         })}
       </div>
