@@ -1,10 +1,14 @@
 "use client";
 
+import { useLibrary } from "@/contex/LibraryContex";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 const SaveCounter = () => {
   const router = useRouter();
+  const { save } = useLibrary();
+
+  const savecounter = save.length;
 
   const handleScount = () => {
     console.log("Count Button trigger");
@@ -20,7 +24,7 @@ const SaveCounter = () => {
       >
         Saved
         <div className="flex h-[19px] min-w-[19px] items-center justify-center rounded-full border border-[#292a30] px-1 text-[9px] text-[#2D313B]">
-          0
+          {savecounter}
         </div>
       </button>
     </div>

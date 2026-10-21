@@ -1,30 +1,27 @@
 "use client";
 
-import React from "react";
-
+import { useRouter } from "next/navigation";
 import { useLibrary } from "@/contex/LibraryContex";
-import { ILibrary } from "@/Types/library.type";
+import type { ILibrary } from "@/contex/LibraryContex";
 
 interface SaveButtonProps {
   library: ILibrary;
 }
 
 const SaveButton = ({ library }: SaveButtonProps) => {
-  const { save, setSave, showToast } = useLibrary();
+  const { save, setSave } = useLibrary();
+  const router = useRouter();
 
   const handleSave = () => {
     const alreadySaved = save.some(
       (item) => String(item.id) === String(library.id),
     );
 
-    if (alreadySaved) {
-      showToast("Already saved");
-      return;
+    if (!alreadySaved) {
+      setSave((prev) => [...prev, library]);
     }
 
-    setSave((prev) => [...prev, library]);
-
-    showToast("Saved for later");
+    router.push("/my-plan");
   };
 
   return (

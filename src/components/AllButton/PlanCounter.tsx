@@ -1,13 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React from "react";
+import { useLibrary } from "@/contex/LibraryContex";
 
 const PlanCounter = () => {
   const router = useRouter();
+  const { todayPlan } = useLibrary();
+
+  const planCount = todayPlan.length;
 
   const handlePcount = () => {
-    console.log("Count Button tigger");
+    console.log("Plan Counter clicked");
     router.push("/my-plan");
   };
 
@@ -15,14 +18,14 @@ const PlanCounter = () => {
     <div className="flex items-center gap-1.5 text-[10px] text-[#b5b5b9] sm:gap-2">
       <button
         type="button"
-        className="flex items-center gap-1.5 text-[10px] text-[#b5b5b9] sm:gap-2 cursor-pointer"
-        onClick={() => handlePcount()}
+        className="flex cursor-pointer items-center gap-1.5 text-[10px] text-[#b5b5b9] sm:gap-2"
+        onClick={handlePcount}
       >
-        <div>Plan</div>
+        <span>Plan</span>
 
-        <div className="flex h-[19px] min-w-[19px] items-center justify-center rounded-full bg-[#C2F800] px-1 text-[9px] font-bold text-black">
-          0
-        </div>
+        <span className="flex h-[19px] min-w-[19px] items-center justify-center rounded-full bg-[#C2F800] px-1 text-[9px] font-bold text-black">
+          {planCount}
+        </span>
       </button>
     </div>
   );
