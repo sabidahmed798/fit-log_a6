@@ -117,7 +117,7 @@ const MyPlan = () => {
             <select
               value={sortBy}
               onChange={(event) => setSortBy(event.target.value as SortOption)}
-              className="w-[155px] rounded-md border border-[#34353B] bg-[#151619] px-3 py-2 text-xs text-gray-300 outline-none transition-colors sm:text-sm"
+              className="w-38.75 rounded-md border border-[#34353B] bg-[#151619] px-3 py-2 text-xs text-gray-300 outline-none transition-colors sm:text-sm"
               aria-label="Sort exercises"
             >
               <option value="duration">Duration</option>
@@ -129,7 +129,7 @@ const MyPlan = () => {
 
         {/* Empty State */}
         {sortedExercises.length === 0 ? (
-          <div className="mt-3 flex min-h-[300px] flex-col items-center justify-center rounded-lg border border-[#202126] bg-[#101114]">
+          <div className="mt-3 flex min-h-75 flex-col items-center justify-center rounded-lg border border-[#202126] bg-[#101114]">
             <h2 className="text-sm font-black uppercase text-gray-300">
               {activeTab === "today"
                 ? "NO EXERCISES IN YOUR PLAN"
@@ -186,7 +186,7 @@ const MyPlan = () => {
                     </h3>
 
                     <p className="mt-1 text-xs text-gray-500">
-                      {exercise.muscleGroups.join(" • ")}
+                      {exercise.muscleGroups.join()}
                     </p>
 
                     <div className="mt-2 flex flex-wrap gap-3 text-xs text-gray-400">
@@ -198,6 +198,7 @@ const MyPlan = () => {
                   </div>
 
                   {/* Rating */}
+
                   <div className="shrink-0 text-right">
                     <span className="text-xs text-[#b7ff00]">
                       ★ {exercise.rating}
